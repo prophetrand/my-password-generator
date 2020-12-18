@@ -15,12 +15,31 @@ function writePassword() {
 
   passwordText.value = password;
 
-  // note to RAND: I will need a For loop that iterates through each index of the array/string(?) the number of times that the user inputs for the password length. Maybe have each randomly generated character populate an index of another array (with .push()), then run a .join() method (google this it might be called something else) to consolidate the array into one string again.
+ 
   function generatePassword(){
-    var userLength = prompt("How many characters long do you want your password to be?");
     
+    var userLength = prompt("How many characters long do you want your password to be?");
+    var lowerYes = confirm("Would you like to use lowercase letters?");
+    var upperYes = confirm("Would you like to use uppercase letters?");
+    var numYes = confirm("Would you like to use numbers?");
+    var specialYes = confirm("Would you like to use special characters?");
+
+    if (lowerYes || upperYes || numYes || specialYes){
+      console.log("It works! Results below");
+      console.log(lowerYes);
+      console.log(upperYes);
+      console.log(numYes);
+      console.log(specialYes);
+    } else {
+      console.log("DISFUNCTION");
+    }
+
+
     for (var i = 0; i < userLength; i++){
-      charHolder.push()
+      
+
+       // note to RAND: This For loop iterates through each index of the array/string(?) the number of times that the user inputs for the password length. Maybe have each randomly generated character populate an index of another array (with .push()), then run a .join() method (google this it might be called something else) to consolidate the array into one string again. Also make this comment presentable =)
+      charHolder.push("character")
     }
 
   }
