@@ -61,15 +61,12 @@ function writePassword() {
     if (specialYes){
       Array.prototype.push.apply(charHolder, specialChars);
     }
-    
-    console.log(charHolder);
-   
-    
+
+    // This For loop iterates for the number of times that the User inputs as the password length, represented by userLength.
+    // The Math methods called here for the variable randomizer generate a random number between 0 and 1, multiplied by charHolder.length, and then round the number down to the nearest integer. The variable finalChar is set to the index of charHolder specified by randomizer, and then finalChar is pushed into the passBuilder array. The for loop then repeats until i = userLength, effectively generating a number of characters equal to userLength and pushing them into passBuilder one by one.
     for (var i = 0; i < userLength; i++){
       var randomizer = Math.floor(Math.random() * charHolder.length);
       var finalChar = charHolder[randomizer];
-
-       // This For loop iterates for the number of times that the User inputs as the password length, represented by userLength. 
       passBuilder.push(finalChar);
     }
 
