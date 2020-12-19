@@ -16,18 +16,17 @@ function writePassword() {
 
  
   function generatePassword(){
-    
+    // These initial "validator" values act as gates for the while loops that follow, both preventing the User from progressing without giving valid criteria for the password.
     var validator1 = false;
     var validator2 = false;
     var charHolder = [];
     var passBuilder = [];
 
-    // This while loop checks if the boolean variable "validator1" is set to false, which it is by default. If the User answers the prompt with a number outside the bounds declared in the if condition, or if their answer is not a number, then validator1 is not changed and the while loop runs again. A response of a number between 8 and 128 (inclusive) will trigger the else condition and validator1 will be set to true, ending the while loop.
+    // This while loop checks if the boolean variable "validator1" is set to false, which it is by default. If the User answers the prompt with a number outside the bounds declared in the if condition, or if the User clicks "Cancel" instead of "OK" causing a null value, then validator1 is not changed and the while loop runs again after alerting the User of the rules again. A response of a number between 8 and 128 (inclusive) will trigger the else condition and validator1 will be set to true, ending the while loop.
     while (validator1 === false){
-      // Since the prompt() method returns a string provided by the user, I use parseInt() on that string to convert it to a number value.
-      var userLength = parseInt(prompt("How many characters long do you want your password to be? \nYou must enter a number no smaller than 8 and no larger than 128."));
+      var userLength = prompt("How many characters long do you want your password to be? \nYou must enter a number no smaller than 8 and no larger than 128.");
       
-      if (userLength < 8 || userLength > 128 || typeof(userLength) !== "number"){
+      if (userLength < 8 || userLength > 128 || userLength === null){
         alert("PLEASE ENTER A NUMBER FROM 8 TO 128...");
       } else {
         validator1 = true;
@@ -43,11 +42,6 @@ function writePassword() {
       var specialYes = confirm("Would you like to use special characters?");
       
       if (lowerYes || upperYes || numYes || specialYes){
-        console.log("It works! Results below");
-        console.log(lowerYes);
-        console.log(upperYes);
-        console.log(numYes);
-        console.log(specialYes);
         validator2 = true;
       } else {
         alert("DYSFUNCTION... PLEASE ACCEPT AT LEAST ONE CHARACTER SET...");
@@ -72,14 +66,16 @@ function writePassword() {
    
     
     for (var i = 0; i < userLength; i++){
-      var randomizer = Math.floor(Math.random() * charHolder.length)
+      var randomizer = Math.floor(Math.random() * charHolder.length);
+      var finalChar = charHolder[randomizer];
 
-       // note to RAND: This For loop iterates for the number of times that the User inputs for the password length. Maybe have each randomly generated character populate an index of another array (with .push()), then run a .join('') method (google this it might be called something else) to consolidate the array into one string again. Also make this comment presentable =)
-      passBuilder.push("character");
+       // This For loop iterates for the number of times that the User inputs as the password length, represented by userLength. 
+      passBuilder.push(finalChar);
     }
+
+    // Finally, the array elements of passBuilder are consolidated into one string with the .join() method, with an empty string passed through it so that nothing is inserted between the array elements. The result will be a continuous string whose length is equal to userLength, and is stored in the variable finalPass. finalPass is returned so that the final output of generatePassword() is the password to be displayed to the User.
     var finalPass = passBuilder.join('');
     return finalPass;
-
   }
 }
 
