@@ -72,7 +72,7 @@ Shown here is the appearance of the application after the activation button has 
 
 ## Acknowledgments
 * [W3Schools](https://www.w3schools.com/) has been my go-to for descriptive tutorials on HTML, CSS, and Javascript syntax and best practices. I am eternally grateful for their massive store of documentation.
-* UC Berkeley Coding Bootcamp provided the initial code to be refactored.
+* UC Berkeley Coding Bootcamp provided the initial HTML and CSS for this project.
 
 ## License
 Bootstrap is available under the MIT License and is copyrighted in 2020 to Twitter. The details of the license can be read [here](https://github.com/twbs/bootstrap/blob/v5.0.0-beta1/LICENSE).
